@@ -11,7 +11,7 @@ classifier = transformers.pipeline("sentiment-analysis", top_k=None)
 # specify the backend generator used to help you write tests
 generator = adatest.generators.AI21('j2-mid', api_key=os.environ.get('AI21_API_KEY'))
 
-# Genorate the output path if it doesn't exist
+# Generate the output path if it doesn't exist
 path = "./output"
 isExist = os.path.exists(path)
 if not isExist:
