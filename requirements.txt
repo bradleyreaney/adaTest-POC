@@ -1,7 +1,6 @@
 adatest
 transformers
 python-dotenv
-dotenv
 openai == 0.28
 torch
 torchvision

@@ -9,14 +9,17 @@ load_dotenv()
 classifier = transformers.pipeline("sentiment-analysis", top_k=None)
 
 # specify the backend generator used to help you write tests
-generator = adatest.generators.OpenAI('curie', api_key=os.environ.get('OPENAPI_API_KEY'))
+generator = adatest.generators.AI21('j2-mid', api_key=os.environ.get('AI21_API_KEY'))
 
-# ...or you can use an open source generator
-#neo = transformers.pipeline('text-generation', model="EleutherAI/gpt-neo-125M")
-#generator = adatest.generators.Transformers(neo.model, neo.tokenizer)
+# Genorate the output path if it doesn't exist
+path = "./output"
+isExist = os.path.exists(path)
+if not isExist:
+   os.makedirs(path)
 
 # create a new test tree
 tests = adatest.TestTree("./output/Nimble_Chat_Bot.csv")
+# tests = adatest.TestTreeBrowser()
 
 # adapt the tests to our model to launch a notebook-based testing interface
 # (wrap with adatest.serve to launch a standalone server)
